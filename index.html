@@ -9,41 +9,61 @@
   <link rel="stylesheet" href="style.css">
   <title>Registro</title>
 </head>
-
 <body>
   <h1>Registro</h1>
   <form>
     <fieldset>
-      <label for="nombre">Nombre:</label>
+      <label for="nombre">Nombre</label>
       <input type="text" id="nombre" required>
     </fieldset>
     <fieldset>
-      <label for="apellido">Apellido:</label>
+      <label for="apellido">Apellido</label>
       <input type="text" id="apellido" required>
     </fieldset>
     <fieldset>
-      <label for="email">Email:</label>
+      <label for="email">Email</label>
       <input type="email" id="email" required>
     </fieldset>
     <fieldset>
-      <label for="edad">Edad:</label>
+      <label for="edad">Edad</label>
       <input type="number" id="edad" required>
     </fieldset>
     <fieldset>
-      <label for="sexo">Sexo:</label>
-      <input type="radio" name="sexo" value="m" required>Masculino
-      <input type="radio" name="sexo" value="f" required>Femenino
-      <input type="radio" name="sexo" value="x" required>Otro
+      <p>Sexo</p>
+      <div class="opcion">
+        <label for="masculino">Masculino</label>
+        <input type="radio" name="sexo" id="masculino" value="m" required>
+      </div>
+      <div class="opcion">
+        <label for="femenino">Femenino</label>
+        <input type="radio" name="sexo" id="femenino" value="f" required>
+      </div>
+      <div class="opcion">
+        <label for="otro">Otro</label>
+        <input type="radio" name="sexo" id="otro" value="x" required>
+      </div>
     </fieldset>
     <fieldset>
-      <label for="interes">Interes en:</label>
-      <input type="checkbox" name="interes" value="deportes">Deportes
-      <input type="checkbox" name="interes" value="musica">Musica
-      <input type="checkbox" name="interes" value="juegos">Juegos
-      <input type="checkbox" name="interes" value="tecnologia">Tecnologia
+      <p>Interes en</p>
+      <div class="opcion">
+        <label for="deportes">Deportes</label>
+        <input type="checkbox" name="interes" value="deportes" id="deportes">
+      </div>
+      <div class="opcion">
+        <label for="musica">Musica</label>
+        <input type="checkbox" name="interes" value="musica" id="musica">
+      </div>
+      <div class="opcion">
+        <label for="juegos">Juegos</label>
+        <input type="checkbox" name="interes" value="juegos" id="juegos">
+      </div>
+      <div class="opcion">
+        <label for="tecnologia">Tecnologia</label>
+        <input type="checkbox" name="interes" value="tecnologia" id="tecnologia">
+      </div>
     </fieldset>
     <fieldset>
-      <label for="pais">Pais:</label>
+      <label for="pais">Pais</label>
       <select name="pais" id="pais" required>
         <option value="" selected disabled hidden>Elija un pais</option>
         <option value="arg">Argentina</option>
@@ -53,8 +73,8 @@
       </select>
     </fieldset>
     <fieldset>
-      <label for="comentario">Comentario:</label>
-      <textarea name="comentario" id="comentario" cols="50" rows="5"></textarea>
+      <label for="comentario">Comentario</label>
+      <textarea name="comentario" id="comentario" cols="30" rows="5"></textarea>
     </fieldset>
     <button type="submit">Enviar</button>
   </form>
