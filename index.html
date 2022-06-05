@@ -12,71 +12,84 @@
 <body>
   <h1>Registro</h1>
   <form>
-    <fieldset>
-      <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" required>
-    </fieldset>
-    <fieldset>
-      <label for="apellido">Apellido</label>
-      <input type="text" id="apellido" required>
-    </fieldset>
-    <fieldset>
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
-    </fieldset>
-    <fieldset>
-      <label for="edad">Edad</label>
-      <input type="number" id="edad" required>
-    </fieldset>
-    <fieldset>
-      <p>Sexo</p>
-      <div class="opcion">
-        <label for="masculino">Masculino</label>
-        <input type="radio" name="sexo" id="masculino" value="m" required>
+    <div class="row">
+      <fieldset>
+        <label for="nombre">Nombre<span> *</span></label>
+        <input type="text" id="nombre" required>
+      </fieldset>
+      <fieldset>
+        <label for="apellido">Apellido<span> *</span></label>
+        <input type="text" id="apellido" required>
+      </fieldset>
+    </div>
+    <div class="row">
+      <fieldset>
+        <label for="email">Email<span> *</span></label>
+        <input type="email" id="email" required>
+      </fieldset>
+      <fieldset>
+        <label for="edad">Edad<span> *</span></label>
+        <input type="number" id="edad" required>
+      </fieldset>
+    </div>
+    <div class="row">
+      <fieldset>
+        <p>Sexo<span> *</span></p>
+        <div class="opcion">
+          <label for="masculino">Masculino</label>
+          <input type="radio" name="sexo" id="masculino" value="m" required>
+        </div>
+        <div class="opcion">
+          <label for="femenino">Femenino</label>
+          <input type="radio" name="sexo" id="femenino" value="f" required>
+        </div>
+        <div class="opcion">
+          <label for="otro">Otro</label>
+          <input type="radio" name="sexo" id="otro" value="x" required>
+        </div>
+      </fieldset>
+      <fieldset>
+        <p>Interes en<span> *</span></p>
+        <div class="opcion">
+          <label for="deportes">Deportes</label>
+          <input type="checkbox" name="interes" value="deportes" id="deportes">
+        </div>
+        <div class="opcion">
+          <label for="musica">Musica</label>
+          <input type="checkbox" name="interes" value="musica" id="musica">
+        </div>
+        <div class="opcion">
+          <label for="juegos">Juegos</label>
+          <input type="checkbox" name="interes" value="juegos" id="juegos">
+        </div>
+        <div class="opcion">
+          <label for="tecnologia">Tecnologia</label>
+          <input type="checkbox" name="interes" value="tecnologia" id="tecnologia">
+        </div>
+      </fieldset>
+    </div>
+    <div class="col">
+      <fieldset>
+        <label for="pais">Pais<span> *</span></label>
+        <select name="pais" id="pais" required>
+          <option value="" selected disabled hidden>Elija un pais</option>
+          <option value="arg">Argentina</option>
+          <option value="bra">Brasil</option>
+          <option value="chi">Chile</option>
+          <option value="uru">Uruguay</option>
+        </select>
+      </fieldset>
+      <fieldset>
+        <label for="comentario">Comentario</label>
+        <textarea name="comentario" id="comentario"></textarea>
+      </fieldset>
+      <div class="row">
+        <button type="reset" class="boton-secundario">Reset</button>
+        <button type="submit" class="boton-primario">Enviar</button>
       </div>
-      <div class="opcion">
-        <label for="femenino">Femenino</label>
-        <input type="radio" name="sexo" id="femenino" value="f" required>
-      </div>
-      <div class="opcion">
-        <label for="otro">Otro</label>
-        <input type="radio" name="sexo" id="otro" value="x" required>
-      </div>
-    </fieldset>
-    <fieldset>
-      <p>Interes en</p>
-      <div class="opcion">
-        <label for="deportes">Deportes</label>
-        <input type="checkbox" name="interes" value="deportes" id="deportes">
-      </div>
-      <div class="opcion">
-        <label for="musica">Musica</label>
-        <input type="checkbox" name="interes" value="musica" id="musica">
-      </div>
-      <div class="opcion">
-        <label for="juegos">Juegos</label>
-        <input type="checkbox" name="interes" value="juegos" id="juegos">
-      </div>
-      <div class="opcion">
-        <label for="tecnologia">Tecnologia</label>
-        <input type="checkbox" name="interes" value="tecnologia" id="tecnologia">
-      </div>
-    </fieldset>
-    <fieldset>
-      <label for="pais">Pais</label>
-      <select name="pais" id="pais" required>
-        <option value="" selected disabled hidden>Elija un pais</option>
-        <option value="arg">Argentina</option>
-        <option value="bra">Brasil</option>
-        <option value="chi">Chile</option>
-        <option value="uru">Uruguay</option>
-      </select>
-    </fieldset>
-    <fieldset>
-      <label for="comentario">Comentario</label>
-      <textarea name="comentario" id="comentario" cols="30" rows="5"></textarea>
-    </fieldset>
-    <button type="submit">Enviar</button>
+      
+    </div>
+     
   </form>
 </body>
 
