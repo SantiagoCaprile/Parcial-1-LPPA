@@ -108,6 +108,9 @@ button:hover{
 .col fieldset{
   width: 100%;
 }
+.error-field{
+  border: 3px solid red;
+}
 @media (min-width: 728px){
   form{
     width: 60%;
