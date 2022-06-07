@@ -24,4 +24,29 @@ window.onload = function () {
   apellido.onfocus = function () {
     apellido.classList.remove("error-field");
   }
+  email.onblur = function () {
+    if (!email.value.match(/[a-z0-9]+@[a-z]+\.[a-z]/)) {
+      email.classList.add("error-field");
+    } else {
+      email.classList.remove("error-field");
+    }
+  };
+  email.onfocus = function () {
+    email.classList.remove("error-field");
+  }
+  edad.onblur = function () {
+    const valorEdad = Number(edad.value);
+    if (Number.isInteger(valorEdad)){
+      if (edad.value < 0 || edad.value > 100) {
+        edad.classList.add("error-field");
+      } else {
+        edad.classList.remove("error-field");
+      }
+    } else {
+      edad.classList.add("error-field");
+    }
+  };
+  edad.onfocus = function () {
+    edad.classList.remove("error-field");
+  }
 };
