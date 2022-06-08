@@ -17,7 +17,7 @@
 }
 header{
   background-color: var(--background-color);
-  padding: 1rem;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,6 +190,14 @@ button:hover{
   font-size: 12px;
   font-weight: bold;
 }
+footer{
+  text-align: center;
+  font-family: fuenteMaki;
+  text-shadow: 1px 1px #000000;
+  padding: 7px;
+  width: 100%;
+  background-color: #00BD83;
+}
 @media (min-width: 728px){
   form{
     width: 60%;
@@ -211,5 +219,9 @@ button:hover{
   }
   button{
     width: 350px;
+  }
+  footer{
+    position: absolute;
+    bottom: 0;
   }
 }
