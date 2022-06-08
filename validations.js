@@ -3,10 +3,14 @@ window.onload = function () {
   const apellido = document.getElementById("apellido");
   const email = document.getElementById("email");
   const edad = document.getElementById("edad");
+  const sexo = document.getElementById("sexo");
+  const intereses = document.getElementById("intereses");
+  const pais = document.getElementById("pais");
   const botonEnviar = document.getElementById("boton-enviar");
-  const form = document.getElementById("formulario");
   const modal = document.getElementById("modal");
   const equis = document.getElementsByClassName("close")[0];
+  const todosLosFieldsets = document.getElementsByTagName("fieldset");
+  const todosLosInputs = document.getElementsByTagName("input");
 
   // When the user clicks on the button, open the modal
   function mostrarModal(){
@@ -53,64 +57,130 @@ window.onload = function () {
     }
     document.getElementById("comentario-final").innerText = "Comentario: \n" + document.getElementById("comentario").value;
   };
-
-  // When the user clicks on <span> (x), close the modal
   equis.onclick = function () {
     modal.style.display = "none";
   };
-
-  // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   };
   ///////////////////////////////////////////////
-  function esNombreValido() {
+  function mostrarErrores(campo, error){
+    if(campo.parentElement.lastElementChild.classList.contains("error")){
+      campo.parentElement.lastElementChild.innerText = error;
+    } else {
+      campo.parentElement.appendChild(document.createElement("p"));
+      campo.parentElement.lastElementChild.innerText = error;
+      campo.parentElement.lastElementChild.classList.add("error");
+    }
+  }
+  function limpiarErrores(fieldSet){
+    if(fieldSet.lastElementChild.classList.contains("error")){
+      fieldSet.lastElementChild.remove();
+    }
+  }
+  function limpiarTodosLosErrores(){
+    for(let i = 0; i < todosLosFieldsets.length; i++){
+      limpiarErrores(todosLosFieldsets[i]);
+    }
+  }
+  function erroresNombre() {
+    let error = "";
+    if (nombre.value == "") {
+      error += "El nombre no puede estar vacío.\n";
+    }
     if (nombre.value.length < 3) {
-      return false;
-    } else {
-      return true;
+      error += "El nombre debe tener al menos 3 caracteres.\n";
     }
+    return error;
   }
-  function esApellidoValido() {
+  function erroresApellido() {
+    let error = "";
+    if (apellido.value == "") {
+      error += "El apellido no puede estar vacío.\n";
+    }
     if (apellido.value.length < 3) {
-      return false;
-    } else {
-      return true;
+      error += "El apellido debe tener al menos 3 caracteres.\n";
     }
+    return error;
   }
-  function esEmailValido() {
+  function erroresEmail() {
+    let error = "";
+    if (email.value == "") {
+      error = "El email no puede estar vacío.\n";
+    }
     if (!email.value.match(/[a-z0-9]+@[a-z]+\.[a-z]/)) {
-      return false;
-    } else {
-      return true;
+      error = "El email no es válido.\n";
     }
+    return error;
   }
-  function esEdadValida() {
+  function erroresEdad() {
+    let error = "";
+    if (edad.value == "") {
+      error += "La edad no puede estar vacía.\n";
+    }
     const valorEdad = Number(edad.value);
     if (Number.isInteger(valorEdad)) {
       if (edad.value < 0 || edad.value > 100) {
-        return false;
-      } else {
-        return true;
+        return "La edad debe estar entre 0 y 100 años.\n";
       }
     } else {
-      return false;
+      error += "La edad debe ser un número entero.\n";
     }
+    return error;
   }
+  //("" && "") == ""
+  //las 4 funciones devuelven strings, por lo que si no hay errores, devuelve ""
+  //falta modificar el p de error para que si hay errores, muestre los de la función
 
+  function erroresSexo() {
+    let error = "";
+    if (!document.getElementById("masculino").checked &&
+    !document.getElementById("femenino").checked && 
+    !document.getElementById("otro").checked) {
+      error += "Debe seleccionar una opcion.\n";
+    }
+    return error;
+  }
+  function erroresIntereses() {
+    let error = "";
+    if (!document.getElementById("deportes").checked &&
+    !document.getElementById("musica").checked && 
+    !document.getElementById("juegos").checked && 
+    !document.getElementById("tecnologia").checked) {
+      error += "Debe seleccionar al menos una opcion.\n";
+    }
+    return error;
+  }
+  function erroresPais() {
+    let error = "";
+    if (document.getElementById("pais").value == "") {
+      error += "Debe seleccionar un pais.\n";
+    }
+    return error;
+  }
   botonEnviar.addEventListener("click", function (e) {
     e.preventDefault();
+    limpiarTodosLosErrores();
     const esFormValido =
-      esNombreValido() &&
-      esApellidoValido() &&
-      esEmailValido() &&
-      esEdadValida();
+      erroresNombre() +
+      erroresApellido() +
+      erroresEmail() +
+      erroresEdad() +
+      erroresSexo() +
+      erroresIntereses() +
+      erroresPais();
     if (!esFormValido) {
-      alert("Formulario invalido");
-    } else {
       mostrarModal();
+    } else {
+      mostrarErrores(nombre, erroresNombre());
+      mostrarErrores(apellido, erroresApellido());
+      mostrarErrores(email, erroresEmail());
+      mostrarErrores(edad, erroresEdad());
+      mostrarErrores(sexo.firstChild, erroresSexo());
+      mostrarErrores(intereses.firstChild, erroresIntereses());
+      mostrarErrores(pais, erroresPais());
     }
   });
 }
