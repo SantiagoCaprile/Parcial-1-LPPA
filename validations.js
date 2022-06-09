@@ -6,56 +6,64 @@ window.onload = function () {
   const sexo = document.getElementById("sexo");
   const intereses = document.getElementById("intereses");
   const pais = document.getElementById("pais");
+  const comentario = document.getElementById("comentario");
   const botonEnviar = document.getElementById("boton-enviar");
   const modal = document.getElementById("modal");
+  const modalHeader = document.getElementsByClassName("modal-body")[0];
   const equis = document.getElementsByClassName("close")[0];
   const todosLosFieldsets = document.getElementsByTagName("fieldset");
-  const todosLosInputs = document.getElementsByTagName("input");
 
-  // When the user clicks on the button, open the modal
   function mostrarModal(){
     modal.style.display = "block";
-    document.getElementById("nombre-final").innerText = "Nombre: " + nombre.value;
-    document.getElementById("apellido-final").innerText = "Apellido: " + apellido.value;
-    document.getElementById("email-final").innerText = "Email: " + email.value;
-    document.getElementById("edad-final").innerText = "Edad: " + edad.value + " años";
-    document.getElementById("sexo-final").innerText = "Sexo: " ;
-    if (document.getElementById("masculino").checked) {
-      document.getElementById("sexo-final").innerText += " Masculino";
-    } else if (document.getElementById("femenino").checked) {
-      document.getElementById("sexo-final").innerText += " Femenino";
-    } else if (document.getElementById("otro").checked) {
-      document.getElementById("sexo-final").innerText += " Otro";
-    }
-    document.getElementById("intereses-final").innerText = "Intereses: ";
-    if (document.getElementById("deportes").checked) {
-      document.getElementById("intereses-final").innerText += "- Deportes";
-    }
-    if (document.getElementById("musica").checked) {
-      document.getElementById("intereses-final").innerText += "- Música";
-    }
-    if (document.getElementById("juegos").checked) {
-      document.getElementById("intereses-final").innerText += "- Juegos";
-    }
-    if (document.getElementById("tecnologia").checked) {
-      document.getElementById("intereses-final").innerText += "- Tecnología";
-    }
-    document.getElementById("pais-final").innerText = "País: ";
+    var frase = "Su nombre es " + nombre.value + " " + apellido.value + ".";
+    var frase2 = "Vive en ";
     switch (document.getElementById("pais").value) {
       case "arg":
-        document.getElementById("pais-final").innerText += " Argentina";
+        frase2 += " Argentina,";
         break;
       case "bra":
-        document.getElementById("pais-final").innerText += " Brasil";
+        frase2 += " Brasil,";
         break;
       case "chi":
-        document.getElementById("pais-final").innerText += " Chile";
+        frase2 += " Chile,";
         break;
       case "uru":
-        document.getElementById("pais-final").innerText += " Uruguay";
+        frase2 += " Uruguay,";
         break;
     }
-    document.getElementById("comentario-final").innerText = "Comentario: \n" + document.getElementById("comentario").value;
+    frase2 += " tiene " + edad.value + " años y se identifica con el sexo ";
+    if (document.getElementById("masculino").checked) {
+      frase2 += " Masculino.";
+    } else if (document.getElementById("femenino").checked) {
+      frase2 += " Femenino.";
+    } else if (document.getElementById("otro").checked) {
+      frase2 += " Otro.";
+    }
+    var frase3 = "Se interesa por: ";
+    if (document.getElementById("deportes").checked) {
+      frase3 += "->Deportes";
+    }
+    if (document.getElementById("musica").checked) {
+      frase3 += "->Música";
+    }
+    if (document.getElementById("juegos").checked) {
+      frase3 += "->Juegos";
+    }
+    if (document.getElementById("tecnologia").checked) {
+      frase3 += "->Tecnología";
+    }
+
+    var frase4 = "A partir de ahora recibira todas las novedades en: ";
+    frase4 += document.getElementById("email").value;
+    if(comentario.value != ""){
+      var frase5 = "Ademas aclara que: " + comentario.value;
+    }
+    console.log(frase);
+    modalHeader.appendChild(document.createElement("p")).innerHTML = frase;
+    modalHeader.appendChild(document.createElement("p")).innerHTML = frase2;
+    modalHeader.appendChild(document.createElement("p")).innerHTML = frase3;
+    modalHeader.appendChild(document.createElement("p")).innerHTML = frase4;
+    modalHeader.appendChild(document.createElement("p")).innerHTML = frase5;
   };
   equis.onclick = function () {
     modal.style.display = "none";
