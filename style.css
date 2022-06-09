@@ -251,8 +251,4 @@ footer {
   button {
     width: 350px;
   }
-  footer {
-    position: absolute;
-    bottom: 0;
-  }
 }
